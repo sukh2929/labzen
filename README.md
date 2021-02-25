@@ -2,7 +2,7 @@
 
 ![](https://github.com/UBC-MDS/mdspyutils/workflows/build/badge.svg) [![codecov](https://codecov.io/gh/UBC-MDS/mdspyutils/branch/main/graph/badge.svg)](https://codecov.io/gh/UBC-MDS/mdspyutils) ![Release](https://github.com/UBC-MDS/mdspyutils/workflows/Release/badge.svg) [![Documentation Status](https://readthedocs.org/projects/mdspyutils/badge/?version=latest)](https://mdspyutils.readthedocs.io/en/latest/?badge=latest)
 
-A package to help MDS students manage their labs in iPython notebooks and R markdown.
+A Python package to help MDS students manage their labs in iPython notebooks.
 
 ## Installation
 
