@@ -1,6 +1,6 @@
 # mdspyutils 
 
-![](https://github.com/sukh2929/mdspyutils/workflows/build/badge.svg) [![codecov](https://codecov.io/gh/sukh2929/mdspyutils/branch/main/graph/badge.svg)](https://codecov.io/gh/sukh2929/mdspyutils) ![Release](https://github.com/sukh2929/mdspyutils/workflows/Release/badge.svg) [![Documentation Status](https://readthedocs.org/projects/mdspyutils/badge/?version=latest)](https://mdspyutils.readthedocs.io/en/latest/?badge=latest)
+![](https://github.com/UBC-MDS/mdspyutils/workflows/build/badge.svg) [![codecov](https://codecov.io/gh/UBC-MDS/mdspyutils/branch/main/graph/badge.svg)](https://codecov.io/gh/UBC-MDS/mdspyutils) ![Release](https://github.com/UBC-MDS/mdspyutils/workflows/Release/badge.svg) [![Documentation Status](https://readthedocs.org/projects/mdspyutils/badge/?version=latest)](https://mdspyutils.readthedocs.io/en/latest/?badge=latest)
 
 A package to help MDS students manage their labs in iPython notebooks and R markdown.
 
@@ -28,7 +28,7 @@ The official documentation is hosted on Read the Docs: https://mdspyutils.readth
 
 ## Contributors
 
-We welcome and recognize all contributions. You can see a list of current contributors in the [contributors tab](https://github.com/sukh2929/mdspyutils/graphs/contributors).
+We welcome and recognize all contributions. You can see a list of current contributors in the [contributors tab](https://github.com/UBC-MDS/mdspyutils/graphs/contributors).
 
 ### Credits
 
