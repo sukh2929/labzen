@@ -32,13 +32,69 @@ def count_points(file_name: str = None) -> pd.DataFrame:
     return None
 
 
-def check_mechanics(file_name: str) -> bool:
-    """[summary]
+def check_repo_link(file_name: str) -> bool:
+    """ Check whether the user has included the github repo link in his 
+        repository
 
     Args:
-        file_name (str): [description]
+        file_name (str): A path or list of paths to MDS lab files (either
+            .ipynb or .Rmd). 
 
     Returns:
-        bool: [description]
+        bool: a boolean output 
+
+    Example:
+        check_repo_link('https://github.ubc.ca/MDS-2020-21/DSCI_542_lab1_sukh2929')    
     """
     return None
+
+
+def check_lat_version(file_name: str) -> bool:
+    """ Check whether the user has pushed the latest version in his 
+        repository
+
+    Args:
+        file_name (str): A path or list of paths to MDS lab files (either
+            .ipynb or .Rmd). 
+
+    Returns:
+        bool: a boolean output
+
+    Example:
+        check_lat_version('https://github.ubc.ca/MDS-2020-21/DSCI_542_lab1_sukh2929') 
+    """
+    return None
+
+
+def check_commits(file_name: str) -> bool:
+    """ Check whether the user has atleast three commits
+
+    Args:
+        file_name (str): A path or list of paths to MDS lab files (either
+            .ipynb or .Rmd). 
+
+    Returns:
+        bool: a boolean output
+
+    Example:
+        check_commits('https://github.ubc.ca/MDS-2020-21/DSCI_542_lab1_sukh2929')      
+    """
+    return None
+
+
+def check_mechanics(file_name: str) -> NoneType): 
+    """ It is a wrapper function which calls the other functions - check_repo_link, 
+        check_commits, check_lat_version 
+
+    Args:
+        file_name (str): A path or list of paths to MDS lab files (either
+            .ipynb or .Rmd). 
+
+    Returns:
+        NoneType: Does not return any output
+
+    Example:
+        check_mechanics('https://github.ubc.ca/MDS-2020-21/DSCI_542_lab1_sukh2929')      
+    
+    """
+    return None    
