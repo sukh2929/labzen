@@ -1,10 +1,8 @@
 # mdspyutils 
 
 ![](https://github.com/UBC-MDS/mdspyutils/workflows/build/badge.svg) [![codecov](https://codecov.io/gh/UBC-MDS/mdspyutils/branch/main/graph/badge.svg)](https://codecov.io/gh/UBC-MDS/mdspyutils) ![Release](https://github.com/UBC-MDS/mdspyutils/workflows/Release/badge.svg) [![Documentation Status](https://readthedocs.org/projects/mdspyutils/badge/?version=latest)](https://mdspyutils.readthedocs.io/en/latest/?badge=latest)
-[![Project Status: Concept – Minimal or no implementation has been done yet](https://www.repostatus.org/badges/latest/concept.svg)](https://www.repostatus.org/#concept)
 
-
-A Python package to help MDS students manage their labs in iPython notebooks and R markdown.
+A Python package to help MDS students manage their labs in iPython notebooks.
 
 ## Installation
 
@@ -45,7 +43,7 @@ The official documentation is hosted on Read the Docs: https://mdspyutils.readth
 
 ## Contributors
 
-This package is authored by Sukhdeep Kaur, Kamal Moravej Jahromi, and Rafael Pilliard-Hellwig as part of an academic assignment in the UBC MDS program. For a full list of contributors, please see the [contributors tab](https://github.com/UBC-MDS/mdspyutils/graphs/contributors). 
+We welcome and recognize all contributions. You can see a list of current contributors in the [contributors tab](https://github.com/UBC-MDS/mdspyutils/graphs/contributors).
 
 We warmly welcome and recognize contributions from the community at large. If you wish to participate, please review our [contributing guidelines](CONTRIBUTING.rst) and familiarize yourself with [Github Flow](https://blog.programster.org/git-workflows).
 ### Credits
