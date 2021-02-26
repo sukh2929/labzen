@@ -82,7 +82,7 @@ def check_commits(file_name: str) -> bool:
     return None
 
 
-def check_mechanics(file_name: str) -> NoneType): 
+def check_mechanics(file_name: str) -> NoneType:
     """ It is a wrapper function which calls the other functions - check_repo_link, 
         check_commits, check_lat_version 
 
@@ -97,4 +97,5 @@ def check_mechanics(file_name: str) -> NoneType):
         check_mechanics('https://github.ubc.ca/MDS-2020-21/DSCI_542_lab1_sukh2929')      
     
     """
-    return None    
+    return None
+
