@@ -32,13 +32,13 @@ You can either clone the public repository:
 
 .. code-block:: console
 
-    $ git clone git://github.com/sukh2929/mdspyutils
+    $ git clone git://github.com/UBC-MDS/mdspyutils
 
 Or download the `tarball`_:
 
 .. code-block:: console
 
-    $ curl  -OL https://github.com/sukh2929/mdspyutils/tarball/main
+    $ curl  -OL https://github.com/UBC-MDS/mdspyutils/tarball/main
 
 Once you have a copy of the source, you can install it. The method of installation will depend on the packaging library being used.
 
@@ -55,5 +55,5 @@ If `poetry` is being used (poetry.lock and pyproject.toml files are present), in
     $ poetry install
 
 
-.. _Github repo: https://github.com/sukh2929/mdspyutils
-.. _tarball: https://github.com/sukh2929/mdspyutils/tarball/master
+.. _Github repo: https://github.com/UBC-MDS/mdspyutils
+.. _tarball: https://github.com/UBC-MDS/mdspyutils/tarball/master
