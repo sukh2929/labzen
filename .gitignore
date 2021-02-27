@@ -138,3 +138,6 @@ dmypy.json
 **.Rproj
 **.Rhistory
 .Rproj.user
+
+# macos
+.DS_Store
