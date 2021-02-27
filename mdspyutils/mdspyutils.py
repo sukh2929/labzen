@@ -89,8 +89,10 @@ def check_commits(file_name: str) -> bool:
 
 
 def check_mechanics(file_name: str) -> NoneType:
-    """ It is a wrapper function which calls the other functions - check_repo_link, 
-        check_commits, check_lat_version 
+    """Performs Mechanics Checks on a MDS Lab
+       This function check that you have a Github repo link, that you have 
+       pushed your latest commit, and that you have at least three commit 
+       messages authored by you in your history.
 
     Args:
         file_name (str): A path or list of paths to MDS lab files (either
@@ -99,7 +101,7 @@ def check_mechanics(file_name: str) -> NoneType:
             extension.
 
     Returns:
-        NoneType: Does not return any output
+        NoneType: The function prints the results of the mechanics checks to screen
 
     Example:
         check_mechanics()      
