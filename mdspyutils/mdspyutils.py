@@ -52,7 +52,7 @@ def check_repo_link(file_name: str) -> bool:
 
 
 def check_lat_version(file_name: str) -> bool:
-    """ Check whether the user has pushed the latest version in his 
+    """ Check whether the user has pushed the latest version in his/her 
         repository
 
     Args:
