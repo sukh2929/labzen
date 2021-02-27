@@ -2,6 +2,6 @@
 Usage
 =====
 
-To use mdspyutils in a project::
+To use labzen in a project::
 
-    import mdspyutils
+    import labzen

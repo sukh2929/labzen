@@ -1,4 +1,4 @@
-Welcome to mdspyutils's documentation!
+Welcome to labzen's documentation!
 ===========================================================
 
 .. image:: https://img.shields.io/badge/tutorial-py--pkgs-blue
