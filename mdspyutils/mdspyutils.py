@@ -2,13 +2,18 @@ import pandas as pd
 
 
 def parse_lab(file_name: str) -> list:
-    """[summary]
+    """Parse MDS lab files to return the markdown content
 
     Args:
-        file_name (str): [description]
-
+        file_name (str): A path or list of paths to MDS lab files (either
+            .ipynb or .Rmd). If left blank, the function will recursively
+            search for all labs in the working directory based on the file
+            extension.
     Returns:
-        list: [description]
+        list: Each element of list is a content of one markdown cell.
+
+    Example:
+        parse_lab()
     """
     return None
 
@@ -109,3 +114,4 @@ def check_mechanics(file_name: str) -> NoneType:
     """
     return None
 
+  
