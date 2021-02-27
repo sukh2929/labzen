@@ -1,6 +1,6 @@
-# mdspyutils 
+# labzen 
 
-![](https://github.com/UBC-MDS/mdspyutils/workflows/build/badge.svg) [![codecov](https://codecov.io/gh/UBC-MDS/mdspyutils/branch/main/graph/badge.svg)](https://codecov.io/gh/UBC-MDS/mdspyutils) ![Release](https://github.com/UBC-MDS/mdspyutils/workflows/Release/badge.svg) [![Documentation Status](https://readthedocs.org/projects/mdspyutils/badge/?version=latest)](https://mdspyutils.readthedocs.io/en/latest/?badge=latest)
+![](https://github.com/UBC-MDS/labzen/workflows/build/badge.svg) [![codecov](https://codecov.io/gh/UBC-MDS/labzen/branch/main/graph/badge.svg)](https://codecov.io/gh/UBC-MDS/labzen) ![Release](https://github.com/UBC-MDS/labzen/workflows/Release/badge.svg) [![Documentation Status](https://readthedocs.org/projects/labzen/badge/?version=latest)](https://labzen.readthedocs.io/en/latest/?badge=latest)
 [![Project Status: Concept – Minimal or no implementation has been done yet](https://www.repostatus.org/badges/latest/concept.svg)](https://www.repostatus.org/#concept)
 
 
@@ -9,12 +9,12 @@ A Python package to help MDS students manage their labs in iPython notebooks and
 ## Installation
 
 ```bash
-$ pip install -i https://test.pypi.org/simple/ mdspyutils
+$ pip install -i https://test.pypi.org/simple/ labzen
 ```
 
 ## Features
 
-**mdspyutils** helps members of the [UBC Master of Data Science (MDS)](https://masterdatascience.ubc.ca/) manage lab assignments written in iPython notebooks and R markdown. The package saves precious student time by automating common tasks such as counting up total marks in a lab assignment, and performing common mechanical checks that can-- if overlooked-- lose a student easy marks.
+**labzen** helps members of the [UBC Master of Data Science (MDS)](https://masterdatascience.ubc.ca/) manage lab assignments written in iPython notebooks and R markdown. The package saves precious student time by automating common tasks such as counting up total marks in a lab assignment, and performing common mechanical checks that can-- if overlooked-- lose a student easy marks.
 
 The package is currently under development, but will include the following functions:
 
@@ -29,7 +29,7 @@ The package is currently under development, but will include the following funct
 
 The package data will include a directory of public and/or dummy lab files (.ipynb and .Rmd). Private or unpublished lab files will not be committed to the repository.
 
-To the authors' knowledge, no package yet exists in the Python ecosystem that serves this specific purpose. However, several existing packages will be used to power the functionality of `mdspyutils`, including `GitPython`, `pandas`, and `nbformat`. Some other python repos and past assignments may be used as inspiration, such as the parsing work done in the _throughput database_ in DSCI 513.
+To the authors' knowledge, no package yet exists in the Python ecosystem that serves this specific purpose. However, several existing packages will be used to power the functionality of `labzen`, including `GitPython`, `pandas`, and `nbformat`. Some other python repos and past assignments may be used as inspiration, such as the parsing work done in the _throughput database_ in DSCI 513.
 
 ## Dependencies
 
@@ -41,11 +41,11 @@ To the authors' knowledge, no package yet exists in the Python ecosystem that se
 
 ## Documentation
 
-The official documentation is hosted on Read the Docs: https://mdspyutils.readthedocs.io/en/latest/
+The official documentation is hosted on Read the Docs: https://labzen.readthedocs.io/en/latest/
 
 ## Contributors
 
-This package is authored by Sukhdeep Kaur, Kamal Moravej Jahromi, and Rafael Pilliard-Hellwig as part of an academic assignment in the UBC MDS program. For a full list of contributors, please see the [contributors tab](https://github.com/UBC-MDS/mdspyutils/graphs/contributors). 
+This package is authored by Sukhdeep Kaur, Kamal Moravej Jahromi, and Rafael Pilliard-Hellwig as part of an academic assignment in the UBC MDS program. For a full list of contributors, please see the [contributors tab](https://github.com/UBC-MDS/labzen/graphs/contributors). 
 
 We warmly welcome and recognize contributions from the community at large. If you wish to participate, please review our [contributing guidelines](CONTRIBUTING.rst) and familiarize yourself with [Github Flow](https://blog.programster.org/git-workflows).
 ### Credits

@@ -8,13 +8,13 @@ Installation
 Stable release
 --------------
 
-To install mdspyutils, run this command in your terminal:
+To install labzen, run this command in your terminal:
 
 .. code-block:: console
 
-    $ pip install -u mdspyutils
+    $ pip install -u labzen
 
-This is the preferred method to install mdspyutils, as it will always install the most recent stable release.
+This is the preferred method to install labzen, as it will always install the most recent stable release.
 
 If you don't have `pip`_ installed, this `Python installation guide`_ can guide
 you through the process.
@@ -26,34 +26,34 @@ you through the process.
 From sources
 ------------
 
-The sources for mdspyutils can be downloaded from the `Github repo`_.
+The sources for labzen can be downloaded from the `Github repo`_.
 
 You can either clone the public repository:
 
 .. code-block:: console
 
-    $ git clone git://github.com/UBC-MDS/mdspyutils
+    $ git clone git://github.com/UBC-MDS/labzen
 
 Or download the `tarball`_:
 
 .. code-block:: console
 
-    $ curl  -OL https://github.com/UBC-MDS/mdspyutils/tarball/main
+    $ curl  -OL https://github.com/UBC-MDS/labzen/tarball/main
 
 Once you have a copy of the source, you can install it. The method of installation will depend on the packaging library being used.
 
-For example, if `setuptools` is being used (a setup.py file is present), install mdspyutils with:
+For example, if `setuptools` is being used (a setup.py file is present), install labzen with:
 
 .. code-block:: console
 
     $ python setup.py install
 
-If `poetry` is being used (poetry.lock and pyproject.toml files are present), install mdspyutils with:
+If `poetry` is being used (poetry.lock and pyproject.toml files are present), install labzen with:
 
 .. code-block:: console
 
     $ poetry install
 
 
-.. _Github repo: https://github.com/UBC-MDS/mdspyutils
-.. _tarball: https://github.com/UBC-MDS/mdspyutils/tarball/master
+.. _Github repo: https://github.com/UBC-MDS/labzen
+.. _tarball: https://github.com/UBC-MDS/labzen/tarball/master
