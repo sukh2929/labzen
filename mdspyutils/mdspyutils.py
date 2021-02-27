@@ -33,7 +33,7 @@ def count_points(file_name: str = None) -> pd.DataFrame:
 
 
 def check_repo_link(file_name: str) -> bool:
-    """ Check whether the user has included the github repo link in his 
+    """ Check whether the user has included the github repo link in his/her 
         repository
 
     Args:
