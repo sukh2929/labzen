@@ -71,7 +71,7 @@ def check_lat_version(file_name: str) -> bool:
 
 
 def check_commits(file_name: str) -> bool:
-    """ Check whether the user has atleast three commits
+    """ Check whether the user has at least three commits
 
     Args:
         file_name (str): A path or list of paths to MDS lab files (either
