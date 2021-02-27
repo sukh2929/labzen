@@ -32,13 +32,80 @@ def count_points(file_name: str = None) -> pd.DataFrame:
     return None
 
 
-def check_mechanics(file_name: str) -> bool:
-    """[summary]
+def check_repo_link(file_name: str) -> bool:
+    """ Check whether the user has included the github repo link in his/her 
+        repository
 
     Args:
-        file_name (str): [description]
+        file_name (str): A path or list of paths to MDS lab files (either
+            .ipynb or .Rmd). If left blank, the function will recursively
+            search for all labs in the working directory based on the file
+            extension.
 
     Returns:
-        bool: [description]
+        bool: a boolean output 
+
+    Example:
+        check_repo_link()    
     """
     return None
+
+
+def check_lat_version(file_name: str) -> bool:
+    """ Check whether the user has pushed the latest version in his/her 
+        repository
+
+    Args:
+        file_name (str): A path or list of paths to MDS lab files (either
+            .ipynb or .Rmd). If left blank, the function will recursively
+            search for all labs in the working directory based on the file
+            extension.
+
+    Returns:
+        bool: a boolean output
+
+    Example:
+        check_lat_version() 
+    """
+    return None
+
+
+def check_commits(file_name: str) -> bool:
+    """ Check whether the user has at least three commits
+
+    Args:
+        file_name (str): A path or list of paths to MDS lab files (either
+            .ipynb or .Rmd). If left blank, the function will recursively
+            search for all labs in the working directory based on the file
+            extension.
+
+    Returns:
+        bool: a boolean output
+
+    Example:
+        check_commits()      
+    """
+    return None
+
+
+def check_mechanics(file_name: str) -> NoneType:
+    """Performs Mechanics Checks on a MDS Lab
+       This function check that you have a Github repo link, that you have 
+       pushed your latest commit, and that you have at least three commit 
+       messages authored by you in your history.
+
+    Args:
+        file_name (str): A path or list of paths to MDS lab files (either
+            .ipynb or .Rmd). If left blank, the function will recursively
+            search for all labs in the working directory based on the file
+            extension.
+
+    Returns:
+        NoneType: The function prints the results of the mechanics checks to screen
+
+    Example:
+        check_mechanics()      
+    
+    """
+    return None
+
