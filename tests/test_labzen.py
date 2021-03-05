@@ -1,15 +1,34 @@
 from labzen import __version__
 from labzen import labzen as lz
 from pathlib import Path
+import pytest
+
 
 def test_version():
     assert __version__ == "0.1.0"
 
 
-def test_count_points():
+def test_parse_lab():
     # Define to test files
     pyfile = Path("data-raw/dummylab.ipynb")
     rfile = Path("data-raw/dummylab.Rmd")
+
+    assert type(lz.parse_lab("data-raw/dummylab.ipynb")[0]) == type(
+        "# DSCI 563 - Unsupervised Learning"
+    )
+    assert lz.parse_lab("data-raw/dummylab.ipynb")[4] == '## Imports <a name="im"></a>'
+    assert len(lz.parse_lab("data-raw/dummylab.ipynb")) == 24
+    with pytest.raises(Exception):
+        lz.parse_lab("lab1.csv")
+    with pytest.raises(Exception):
+        lz.parse_lab(4)
+
+
+def test_count_points():
+    # Define to test files
+
+    pyfile = "data-raw/dummylab.ipynb"
+    rfile = "data-raw/dummylab.Rmd"
 
     # Test that the return types are dataframes
     df, tab = lz.count_points(pyfile, margins=False)

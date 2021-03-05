@@ -202,7 +202,7 @@ def check_commits(file_name: str) -> bool:
     return None
 
 
-def check_mechanics(file_name: str) -> NoneType:
+def check_mechanics(file_name: str):
     """Performs Mechanics Checks on a MDS Lab
        This function check that you have a Github repo link, that you have
        pushed your latest commit, and that you have at least three commit
