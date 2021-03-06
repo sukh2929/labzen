@@ -195,7 +195,7 @@ def count_points(file_name: str = None, margins: bool = True):
     return df, tab
 
 
-def check_repo_link(file_name: str):
+def check_repo_link(file_name: str = None):
     """Check whether the user has included the github repo link in his/her
         repository
 
@@ -226,8 +226,6 @@ def check_repo_link(file_name: str):
     # Parse a lab file into its markdown blocks
     res = parse_lab(file_name)
 
-    # Parse a lab file into its markdown blocks
-    res = parse_lab(file_name)
     df = pd.DataFrame({"block": np.arange(1, len(res) + 1), "txt": res})
 
     # finding out if there is any link
@@ -368,27 +366,27 @@ def check_commits(repo_name: str):
     return counter_validuser >= 3
 
 
-def check_mechanics(file_name: str, repo_name: str):
+def check_mechanics(repo_name: str, file_name: str = None):
     """Performs Mechanics Checks on a MDS Lab
        This function check that you have a Github repo link, that you have
        pushed your latest commit, and that you have at least three commit
        messages authored by you in your history.
 
     Args:
+        repo_name (str) : A repo name present under https://github.ubc.ca.
+            For the moment this variable should be provided by the user.
+
         file_name (str): A path or list of paths to MDS lab files (either
             .ipynb or .Rmd). If left blank, the function will recursively
             search for all labs in the working directory based on the file
             extension.
-
-        repo_name (str) : A repo name present under https://github.ubc.ca.
-            For the moment this variable should be provided by the user.
 
     Returns:
         bool : A boolean whether all checks passed. The function also prints
             informative messages as side texts.
 
     Example:
-        check_mechanics("/labzen/data-raw/dummylab.ipynb", "DSCI_599_lab1_jene3456")
+        check_mechanics("DSCI_599_lab1_jene3456", "/labzen/data-raw/dummylab.ipynb")
     """
 
     result = [
