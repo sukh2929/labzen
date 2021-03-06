@@ -46,3 +46,29 @@ def test_count_points():
     assert tab.shape == (2, 2)
     df, tab = lz.count_points(rfile, margins=True)
     assert tab.shape == (3, 2)
+
+
+def test_check_repo_link():
+    # Define to test files
+    pyfile = "data-raw/dummylab.ipynb"
+    rfile = "data-raw/dummylab.Rmd"
+
+    # run the check for dummy files
+    py_link = lz.check_repo_link(pyfile)
+    r_link = lz.check_repo_link(rfile)
+
+    # Test that the return type is boolen
+    assert type(py_link).__name__ == "bool_"
+    assert type(r_link).__name__ == "bool_"
+
+    # .ipynb has no link and should return false
+    assert not py_link
+    # .rmd has a link and should return true
+    assert r_link
+
+    # Test if the function raise exception for a wrong input
+    with pytest.raises(Exception):
+        lz.check_repo_link(4)
+    with pytest.raises(Exception):
+        lz.check_repo_link(data - raw / dummylab.ipynb)
+

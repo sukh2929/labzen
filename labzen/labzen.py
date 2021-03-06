@@ -5,6 +5,23 @@ import numpy as np
 from nbformat import read, NO_CONVERT
 import re
 import glob
+from github import Github
+import git
+
+
+def gettoken():
+    """Get the token as an input from the user
+
+    Returns: 
+        str : A token created on the https://github.ubc.ca
+
+    Example:
+    gettoken()    
+    """
+    token = input(
+        "Enter a valid token generated from github.ubc.ca to get the details from remote: "
+    )
+    return token
 
 
 def parse_lab(notebook=None):
@@ -146,7 +163,7 @@ def count_points(file_name: str = None, margins: bool = True):
     return df, tab
 
 
-def check_repo_link(file_name: str) -> bool:
+def check_repo_link(file_name: str):
     """Check whether the user has included the github repo link in his/her
         repository
 
@@ -161,19 +178,40 @@ def check_repo_link(file_name: str) -> bool:
 
     Example:
         check_repo_link()
+        print(repo_link)
     """
-    return None
+
+    # Parse a lab file into its markdown blocks
+    res = parse_lab(file_name)
+
+    # Parse a lab file into its markdown blocks
+    res = parse_lab(file_name)
+    df = pd.DataFrame({"block": np.arange(1, len(res) + 1), "txt": res})
+
+    # finding out if there is any link
+    rex = (
+        r"((https://)?(www.)?github\.ubc\.ca\/MDS-\d{4}-\d{2}\/DSCI_\d{3}_lab\d_[a-z]+)"
+    )
+    df["link"] = df["txt"].str.contains(rex, regex=True)
+
+    # displaying the result in boolean
+    repo_link = df["link"].any()
+    if repo_link:
+        print("Check 3: Repository link is included in the file")
+        print(f"Check 3: {repo_link}")
+    else:
+        print("Check 3: Repository link is not included in the file")
+        print(f"Check 3:", False)
+
+    return repo_link
 
 
-def check_lat_version(file_name: str) -> bool:
+def check_lat_version(repo_name: str):
     """Check whether the user has pushed the latest version in his/her
         repository
 
     Args:
-        file_name (str): A path or list of paths to MDS lab files (either
-            .ipynb or .Rmd). If left blank, the function will recursively
-            search for all labs in the working directory based on the file
-            extension.
+        repo_name (str): A repo name present under https://github.ubc.ca
 
     Returns:
         bool: a boolean output
@@ -181,17 +219,48 @@ def check_lat_version(file_name: str) -> bool:
     Example:
         check_lat_version()
     """
-    return None
+    # get the token from https://github.ubc.ca
+    global token
+    token = gettoken()
+    g = Github(token, base_url="https://github.ubc.ca/api/v3")
+    org = g.get_organization("MDS-2020-21")
+
+    # get the repo name and and the last commit from the remote
+    for repo in org.get_repos(type="all"):
+        if repo.name == repo_name:
+            print(repo.name)
+            commit_remote = repo.get_commits()
+            last_remotecommit = str(commit_remote[0])
+
+            last_remotecommit = (
+                last_remotecommit.replace("Commit(sha=", "")
+                .replace('"', "")
+                .replace(")", "")
+            )
+            print(last_remotecommit)
+
+    # get the commit SHA from local repo
+    val = input("Enter the local repo path for comparing the lastest version of repo: ")
+    repo = git.Repo(val)
+
+    commit_local = str(repo.head.commit)
+    print(commit_local)
+
+    # comparing the both SHAs
+    if last_remotecommit == commit_local:
+        print("Check 2: Remote has the latest version of the repository")
+        print(f"Check 2: ", True)
+    else:
+        print("Check 2: Remote does not have the latest version of the repository")
+        print(f"Check 2: ", False)
+    return last_remotecommit == commit_local
 
 
-def check_commits(file_name: str) -> bool:
+def check_commits(repo_name: str):
     """Check whether the user has at least three commits
 
     Args:
-        file_name (str): A path or list of paths to MDS lab files (either
-            .ipynb or .Rmd). If left blank, the function will recursively
-            search for all labs in the working directory based on the file
-            extension.
+        file_name (str): A repo name present under https://github.ubc.ca
 
     Returns:
         bool: a boolean output
@@ -199,10 +268,59 @@ def check_commits(file_name: str) -> bool:
     Example:
         check_commits()
     """
-    return None
+    # get the token from https://github.ubc.ca
+
+    # token = gettoken()
+    g = Github(token, base_url="https://github.ubc.ca/api/v3")
+    org = g.get_organization("MDS-2020-21")
+
+    # get the repo name and commits
+    for repo in org.get_repos(type="all"):
+        if repo.name == repo_name:
+            print(repo.name)
+
+            if repo.get_commits().totalCount >= 3:
+                counter_invaliduser = 0
+                counter_validuser = 0
+                for commit in repo.get_commits():
+                    # comapring the username with the commit author to get the commits only
+                    # done by student's username
+                    if g.get_user().name == commit.author.name:
+                        counter_validuser = counter_validuser + 1
+                        print(
+                            commit,
+                            commit.commit.committer,
+                            commit.commit.author.email,
+                            commit.commit.author.date,
+                            commit.author.name,
+                        )
+
+                    else:
+                        counter_invaliduser = counter_invaliduser + 1
+
+                if counter_validuser >= 3:
+
+                    print(
+                        f"Check 1: Repository has at least 3 commits with the student username"
+                    )
+                    print(f"Check 1: ", True)
+
+                    break
+
+                if counter_invaliduser >= 3:
+
+                    print(
+                        f"Check 1: Repository does not have 3 commits with the student username"
+                    )
+                    print(f"Check 1: ", False)
+
+            else:
+                print(f"Check 1: Repository:{repo.name} has less than 3 commits")
+                print(f"Check 1: ", False)
+    return counter_validuser >= 3
 
 
-def check_mechanics(file_name: str):
+def check_mechanics(file_name: str, repo_name: str):
     """Performs Mechanics Checks on a MDS Lab
        This function check that you have a Github repo link, that you have
        pushed your latest commit, and that you have at least three commit
@@ -214,11 +332,22 @@ def check_mechanics(file_name: str):
             search for all labs in the working directory based on the file
             extension.
 
+        repo_name (str) : A repo name present under https://github.ubc.ca  
+
     Returns:
-        NoneType: The function prints the results of the mechanics checks to screen
+        bool : A boolean whether all checks passed. The function also prints 
+            informative messages as side texts.  
 
     Example:
         check_mechanics()
 
     """
-    return None
+
+    result = [
+        check_commits(repo_name),
+        check_lat_version(repo_name),
+        check_repo_link(file_name),
+    ]
+
+    return all(result)
+
