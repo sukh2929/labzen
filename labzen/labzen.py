@@ -12,11 +12,11 @@ import git
 def gettoken():
     """Get the token as an input from the user
 
-    Returns: 
+    Returns:
         str : A token created on the https://github.ubc.ca
 
     Example:
-    gettoken()    
+    gettoken()
     """
     token = input(
         "Enter a valid token generated from github.ubc.ca to get the details from remote: "
@@ -25,7 +25,6 @@ def gettoken():
 
 
 def parse_lab(notebook=None):
-
     """Parse MDS lab files to return the markdown content
     Args:
         file_name (str): A path or list of paths to MDS lab files (either
@@ -35,9 +34,15 @@ def parse_lab(notebook=None):
     Returns:
         list: Each element of list is a content of one markdown cell.
     Example:
+        # Navigate to the root of labzen repo to test the package using
+        # dummy files (dummylab.ipynb and dummylab.Rmd).
+        parse_lab("data-raw/dummylab.ipynb")
+        parse_lab("data-raw/dummylab.Rmd")
+
+        # Alternatively, navigate to a student assignment repo and run the
+        # following code.
         parse_lab()
     """
-
     # If the user did not define the specific file, recursively
     # search for rmd and ipynb files in the working directory
     if notebook is None:
@@ -111,7 +116,21 @@ def count_points(file_name: str = None, margins: bool = True):
             number of optional, required, and total points per lab.
 
     Example:
-        # Navigate to an MDS lab directory and run:
+        # Navigate to the root of labzen repo and run the following code
+        # using the dummy files:
+
+        # for jupyter notebook:
+        df, tab = count_points("data-raw/dummylab.ipynb")
+        print(df)
+        print(tab)
+
+        # for Rmarkdown:
+        df, tab = count_points("data-raw/dummylab.Rmd")
+        print(df)
+        print(tab)
+
+        # Alternatively, navigate to a student assignment repo and run the
+        # following code.
         df, tab = count_points()
         print(df)
         print(tab)
@@ -190,8 +209,18 @@ def check_repo_link(file_name: str):
         bool: a boolean output
 
     Example:
+        # Navigate to the root of labzen repo and run the following code
+        # using the dummy files:
+
+        # for jupyter notebook:
+        check_repo_link("data-raw/dummylab.ipynb")
+
+        # for Rmarkdown:
+        check_repo_link("data-raw/dummylab.Rmd")
+
+        # Alternatively, navigate to a student assignment repo and run the
+        # following code.
         check_repo_link()
-        print(repo_link)
     """
 
     # Parse a lab file into its markdown blocks
@@ -230,7 +259,10 @@ def check_lat_version(repo_name: str):
         bool: a boolean output
 
     Example:
-        check_lat_version()
+        # This function is still under development and difficult to test.
+        # You will need a github token from github.ubc.ca.
+        token = gettoken()
+        check_lat_version("DSCI_599_lab1_jene3456")
     """
     # get the token from https://github.ubc.ca
     global token
@@ -279,7 +311,10 @@ def check_commits(repo_name: str):
         bool: a boolean output
 
     Example:
-        check_commits()
+        # This function is still under development and difficult to test.
+        # You will need a github token from github.ubc.ca.
+        token = gettoken()
+        check_commits("DSCI_599_lab1_jene3456")
     """
     # get the token from https://github.ubc.ca
 
@@ -345,15 +380,15 @@ def check_mechanics(file_name: str, repo_name: str):
             search for all labs in the working directory based on the file
             extension.
 
-        repo_name (str) : A repo name present under https://github.ubc.ca  
+        repo_name (str) : A repo name present under https://github.ubc.ca.
+            For the moment this variable should be provided by the user.
 
     Returns:
-        bool : A boolean whether all checks passed. The function also prints 
-            informative messages as side texts.  
+        bool : A boolean whether all checks passed. The function also prints
+            informative messages as side texts.
 
     Example:
-        check_mechanics()
-
+        check_mechanics("/labzen/data-raw/dummylab.ipynb", "DSCI_599_lab1_jene3456")
     """
 
     result = [
@@ -363,4 +398,3 @@ def check_mechanics(file_name: str, repo_name: str):
     ]
 
     return all(result)
-
