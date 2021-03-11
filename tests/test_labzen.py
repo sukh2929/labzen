@@ -1,11 +1,6 @@
-from labzen import __version__
 from labzen import labzen as lz
 import pytest
 import mock
-
-
-def test_version():
-    assert __version__ == "0.1.0"
 
 
 def test_parse_lab():
