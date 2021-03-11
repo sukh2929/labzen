@@ -2,7 +2,7 @@
 name = "labzen"
 version = "0.1.1"
 description = "A Python package to help the MDS Students to manage their labs in iPython notebooks"
-authors = ["Sukhdeep kaur <sukhdeep_2929@yahoo.com>", "Rafael Pilliard Hellwig", "Kamal Moravej Jahromi"]
+authors = "Sukhdeep kaur, Rafael Pilliard Hellwig, Kamal Moravej Jahromi"
 
 [tool.poetry.dependencies]
 python = "^3.8"
