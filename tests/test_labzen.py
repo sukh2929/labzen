@@ -1,6 +1,7 @@
 from labzen import __version__
 from labzen import labzen as lz
 import pytest
+import mock
 
 
 def test_version():
@@ -8,6 +9,10 @@ def test_version():
 
 
 def test_parse_lab():
+
+    # Test for user input
+    with mock.patch("builtins.input", return_value=1):
+        assert type(lz.parse_lab()).__name__ == "list"
 
     # Define to test files
     pyfile = "data-raw/dummylab.ipynb"
