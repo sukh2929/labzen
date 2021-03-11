@@ -1,6 +1,9 @@
 # labzen 
 
-![](https://github.com/UBC-MDS/labzen/workflows/build/badge.svg) [![codecov](https://codecov.io/gh/UBC-MDS/labzen/branch/main/graph/badge.svg)](https://codecov.io/gh/UBC-MDS/labzen) ![Release](https://github.com/UBC-MDS/labzen/workflows/Release/badge.svg) [![Documentation Status](https://readthedocs.org/projects/labzen/badge/?version=latest)](https://labzen.readthedocs.io/en/latest/?badge=latest)
+![](https://github.com/UBC-MDS/labzen/workflows/build/badge.svg) 
+[![codecov](https://codecov.io/gh/UBC-MDS/labzen/branch/main/graph/badge.svg)](https://codecov.io/gh/UBC-MDS/labzen) 
+[![Deploy](https://github.com/UBC-MDS/labzen/actions/workflows/deploy.yml/badge.svg)](https://github.com/UBC-MDS/labzen/actions/workflows/deploy.yml) 
+[![Documentation Status](https://readthedocs.org/projects/labzen/badge/?version=latest)](https://labzen.readthedocs.io/en/latest/?badge=latest)
 [![Project Status: Concept – Minimal or no implementation has been done yet](https://www.repostatus.org/badges/latest/concept.svg)](https://www.repostatus.org/#concept)
 
 
