@@ -279,8 +279,7 @@ def check_lat_version(repo_name: str):
         if repo.name == repo_name:
             print(repo.name)
             commit_remote = repo.get_commits()
-            lst_rem_commit = pd.Series(str(commit_remote[0]))
-
+            lst_rem_commit = str(commit_remote[0])
             lst_rem_commit = lst_rem_commit.str.replace("Commit(sha=", "")
             lst_rem_commit = lst_rem_commit.str.replace('"', "")
             lst_rem_commit = lst_rem_commit.str.replace(")", "")

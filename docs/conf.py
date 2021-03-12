@@ -27,10 +27,9 @@ sys.path.insert(0, os.path.abspath(".."))
 # -- Project information -----------------------------------------------------
 
 project = u"labzen"
-copyright = (
-    u"2021, Sukhdeep kaur, Rafael Pillard-Hellwig, Kamal Moravej Jahromi",
-)
-author = u"Sukhdeep kaur, Rafael Pillard-Hellwig, Kamal Moravej Jahromi"
+copyright = u"2021, S. kaur, R. Pillard-Hellwig, K. Moravej"
+
+author = u"S. kaur, R. Pillard-Hellwig, K. Moravej"
 
 # -- General configuration ---------------------------------------------
 
