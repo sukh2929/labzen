@@ -20,8 +20,8 @@ def gettoken():
     gettoken()
     """
     token = input(
-        "Enter a valid token generated from github.ubc.ca to get the ",
-        "details from remote: ",
+        "Enter a valid token generated from github.ubc.ca to get the "
+        + "details from remote: ",
     )
     return token
 
@@ -281,11 +281,10 @@ def check_lat_version(repo_name: str):
             commit_remote = repo.get_commits()
             last_remotecommit = str(commit_remote[0])
 
-            last_remotecommit = (
-                last_remotecommit.replace("Commit(sha=", "")
-                .replace('"', "")
-                .replace(")", "")
-            )
+            last_remotecommit = last_remotecommit.replace("Commit(sha=", "")
+            last_remotecommit = last_remotecommit.replace('"', "")
+            last_remotecommit = last_remotecommit.replace(")", "")
+
             print(last_remotecommit)
 
     # get the commit SHA from local repo
