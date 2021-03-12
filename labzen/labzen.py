@@ -36,14 +36,14 @@ def parse_lab(notebook=None):
     Returns:
         list: Each element of list is a content of one markdown cell.
     Example:
-        # Navigate to the root of labzen repo to test the package using
-        # dummy files (dummylab.ipynb and dummylab.Rmd).
-        parse_lab("data-raw/dummylab.ipynb")
-        parse_lab("data-raw/dummylab.Rmd")
+        >>> # Navigate to the root of labzen repo to test the package
+        >>> # using dummy files (dummylab.ipynb and dummylab.Rmd).
+        >>> parse_lab("data-raw/dummylab.ipynb")
+        >>> parse_lab("data-raw/dummylab.Rmd")
 
-        # Alternatively, navigate to a student assignment repo and run the
-        # following code.
-        parse_lab()
+        >>> # Alternatively, navigate to a student assignment repo and
+        >>> # run the following code.
+        >>> parse_lab()
     """
     # If the user did not define the specific file, recursively
     # search for rmd and ipynb files in the working directory
@@ -119,24 +119,24 @@ def count_points(file_name: str = None, margins: bool = True):
             number of optional, required, and total points per lab.
 
     Example:
-        # Navigate to the root of labzen repo and run the following code
-        # using the dummy files:
-
-        # for jupyter notebook:
-        df, tab = count_points("data-raw/dummylab.ipynb")
-        print(df)
-        print(tab)
-
-        # for Rmarkdown:
-        df, tab = count_points("data-raw/dummylab.Rmd")
-        print(df)
-        print(tab)
-
-        # Alternatively, navigate to a student assignment repo and run the
-        # following code.
-        df, tab = count_points()
-        print(df)
-        print(tab)
+        >>> # Navigate to the root of labzen repo and run the following code
+        >>> # using the dummy files:
+        >>>
+        >>> # for jupyter notebook:
+        >>> df, tab = count_points("data-raw/dummylab.ipynb")
+        >>> print(df)
+        >>> print(tab)
+        >>>
+        >>> # for Rmarkdown:
+        >>> df, tab = count_points("data-raw/dummylab.Rmd")
+        >>> print(df)
+        >>> print(tab)
+        >>>
+        >>> # Alternatively, navigate to a student assignment repo and run the
+        >>> # following code.
+        >>> df, tab = count_points()
+        >>> print(df)
+        >>> print(tab)
     """
     # Parse a lab file into its markdown blocks
     res = parse_lab(file_name)
@@ -212,18 +212,18 @@ def check_repo_link(file_name: str = None):
         bool: a boolean output
 
     Example:
-        # Navigate to the root of labzen repo and run the following code
-        # using the dummy files:
-
-        # for jupyter notebook:
-        check_repo_link("data-raw/dummylab.ipynb")
-
-        # for Rmarkdown:
-        check_repo_link("data-raw/dummylab.Rmd")
-
-        # Alternatively, navigate to a student assignment repo and run the
-        # following code.
-        check_repo_link()
+        >>> # Navigate to the root of labzen repo and run the following code
+        >>> # using the dummy files:
+        >>>
+        >>> # for jupyter notebook:
+        >>> check_repo_link("data-raw/dummylab.ipynb")
+        >>>
+        >>> # for Rmarkdown:
+        >>> check_repo_link("data-raw/dummylab.Rmd")
+        >>>
+        >>> # Alternatively, navigate to a student assignment repo and run the
+        >>> # following code.
+        >>> check_repo_link()
     """
 
     # Parse a lab file into its markdown blocks
@@ -263,10 +263,15 @@ def check_lat_version(repo_name: str):
         bool: a boolean output
 
     Example:
-        # This function is still under development and difficult to test.
-        # You will need a github token from github.ubc.ca.
-        token = gettoken()
-        check_lat_version("DSCI_599_lab1_jene3456")
+        >>> # This function is still under development and difficult to test.
+        >>> # You will need a github token from github.ubc.ca.
+        >>> token = gettoken()
+        >>> check_lat_version("DSCI_599_lab1_jene3456")
+        >>> # This will ask for a local git path:
+        >>> # for macos provide the path to following path style:
+        >>> # /Users/jene/MDS/Block5/lab/DSCI_599_lab1_jene3456
+        >>> # for windows provide the following pathe format:
+        >>> # C:\\Users\\jene\\MDS\\Block5\\lab\\DSCI_599_lab1_jene3456
     """
     # get the token from https://github.ubc.ca
     global token
@@ -318,10 +323,15 @@ def check_commits(repo_name: str):
         bool: a boolean output
 
     Example:
-        # This function is still under development and difficult to test.
-        # You will need a github token from github.ubc.ca.
-        token = gettoken()
-        check_commits("DSCI_599_lab1_jene3456")
+        >>> # This function is still under development and difficult to test.
+        >>> # You will need a github token from github.ubc.ca.
+        >>> token = gettoken()
+        >>> check_commits("DSCI_599_lab1_jene3456")
+        >>> # This will ask for a local git path:
+        >>> # for macos provide the path to following path style:
+        >>> # /Users/jene/MDS/Block5/lab/DSCI_599_lab1_jene3456
+        >>> # for windows provide the following pathe format:
+        >>> # C:\\Users\\jene\\MDS\\Block5\\lab\\DSCI_599_lab1_jene3456
     """
     # get the token from https://github.ubc.ca
 
@@ -401,8 +411,13 @@ def check_mechanics(repo_name: str, file_name: str = None):
             informative messages as side texts.
 
     Example:
-        file = "/labzen/data-raw/dummylab.ipynb"
-        check_mechanics("DSCI_599_lab1_jene3456", file)
+        >>> file = "/labzen/data-raw/dummylab.ipynb"
+        >>> check_mechanics("DSCI_599_lab1_jene3456", file)
+        >>> # This will ask for a local git path:
+        >>> # for macos provide the path to following path style:
+        >>> # /Users/jene/MDS/Block5/lab/DSCI_599_lab1_jene3456
+        >>> # for windows provide the following pathe format:
+        >>> # C:\\Users\\jene\\MDS\\Block5\\lab\\DSCI_599_lab1_jene3456
     """
 
     result = [
