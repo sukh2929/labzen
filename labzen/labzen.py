@@ -279,13 +279,13 @@ def check_lat_version(repo_name: str):
         if repo.name == repo_name:
             print(repo.name)
             commit_remote = repo.get_commits()
-            last_remotecommit = str(commit_remote[0])
+            lst_rem_commit = pd.Series(str(commit_remote[0]))
 
-            last_remotecommit = last_remotecommit.replace("Commit(sha=", "")
-            last_remotecommit = last_remotecommit.replace('"', "")
-            last_remotecommit = last_remotecommit.replace(")", "")
+            lst_rem_commit = lst_rem_commit.str.replace("Commit(sha=", "")
+            lst_rem_commit = lst_rem_commit.str.replace('"', "")
+            lst_rem_commit = lst_rem_commit.str.replace(")", "")
 
-            print(last_remotecommit)
+            print(lst_rem_commit)
 
     # get the commit SHA from local repo
     val = input(
@@ -297,7 +297,7 @@ def check_lat_version(repo_name: str):
     print(commit_local)
 
     # comparing the both SHAs
-    if last_remotecommit == commit_local:
+    if lst_rem_commit == commit_local:
         print("Check 2: Remote has the latest version of the repository")
         print("Check 2: ", True)
     else:
@@ -306,7 +306,7 @@ def check_lat_version(repo_name: str):
             "repository",
         )
         print("Check 2: ", False)
-    return last_remotecommit == commit_local
+    return lst_rem_commit == commit_local
 
 
 def check_commits(repo_name: str):
