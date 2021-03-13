@@ -60,7 +60,7 @@ Navigate to the root of labzen repo. From the root of repository run the followi
 ```
 >>> from labzen import labzen as lz
 # for jupyter notebook:
->>> df, tab = count_points("data-raw/dummylab.ipynb")
+>>> df, tab = lz.count_points("data-raw/dummylab.ipynb")
 >>> print(df)
 >>> print(tab)
 
@@ -74,7 +74,7 @@ Navigate to the root of labzen repo. From the root of repository run the followi
  To check the lab mechanics run the following python commands: 
 
 ```
-check_mechanics(<repo_name>)
+lz.check_mechanics(<repo_name>)
 ```
 The repo name should be present under https://github.ubc.ca. After runnint the code, it would ask first for a github token, and then  ask for a local git path. 
 
@@ -86,7 +86,7 @@ and for windows provide the following path format:
 ```
  C:\\Users\\jene\\MDS\\Block5\\lab\\DSCI_599_lab1_jene3456
 ```
-`check_mechanics()` checks that you have a Github repo link, that you have pushed your latest commit, and that you have at least three commit messages authored by you in your history.
+`check_mechanics()` checks that you have provided a Github repo link, that you have pushed your latest commit, and that you have at least three commit messages authored by you in your history.
 
 ## Documentation
 
