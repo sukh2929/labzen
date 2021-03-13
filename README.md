@@ -37,12 +37,56 @@ To the authors' knowledge, no package yet exists in the Python ecosystem that se
 A parallel implementation for R exists [here](https://github.com/UBC-MDS/labzenr).
 
 ## Dependencies
-
-- TODO
-
+```
+python = "^3.8"
+pandas = "^1.2.3"
+nbformat = "^5.1.2"
+PyGithub = "^1.54.1"
+GitPython = "^3.1.14"
+glob2 = "^0.7"
+mock = "^4.0.3"
+```
+Visit [pyproject.toml file]("pyproject.toml") file for complete list of `labzen` dependencies.
 ## Usage
 
-- TODO
+In order to show the usage of our package, we provided two dummy labs, one [Rmarkdown lab]("raw-data/dummylab.Rmd") and one [Jupyter notebook]("raw-data/dummylab.ipynb").
+
+Clone labzen repository using the following command:
+```
+https://github.com/UBC-MDS/labzen.git
+```
+Navigate to the root of labzen repo. From the root of repository run the following python commands:
+
+```
+>>> from labzen import labzen as lz
+# for jupyter notebook:
+>>> df, tab = count_points("data-raw/dummylab.ipynb")
+>>> print(df)
+>>> print(tab)
+
+# for Rmarkdown:
+>>> df, tab = count_points("data-raw/dummylab.Rmd")
+>>> print(df)
+>>> print(tab)
+```
+ This will return a tuple of DataFrames. The first Dataframe is a section-by-section overview of points available. The second Dataframe is a cross table summarising the number of optional, required, and total points per lab.
+
+ To check the lab mechanics run the following python commands: 
+
+```
+check_mechanics(<repo_name>)
+```
+The repo name should be present under https://github.ubc.ca. After runnint the code, it would ask first for a github token, and then  ask for a local git path. 
+
+For macOS provide the following path format:
+```
+/Users/jene/MDS/Block5/lab/DSCI_599_lab1_jene3456
+```
+and for windows provide the following path format:
+```
+ C:\\Users\\jene\\MDS\\Block5\\lab\\DSCI_599_lab1_jene3456
+```
+`check_mechanics()` checks that you have a Github repo link, that you have pushed your latest commit, and that you have at least three commit messages authored by you in your history.
 
 ## Documentation
 
