@@ -46,10 +46,10 @@ GitPython = "^3.1.14"
 glob2 = "^0.7"
 mock = "^4.0.3"
 ```
-Visit [pyproject.toml file]("pyproject.toml") file for complete list of `labzen` dependencies.
+Visit [pyproject.toml file](pyproject.toml) file for complete list of `labzen` dependencies.
 ## Usage
 
-In order to show the usage of our package, we provided two dummy labs, one [Rmarkdown lab]("raw-data/dummylab.Rmd") and one [Jupyter notebook]("raw-data/dummylab.ipynb").
+In order to show the usage of our package, we provided two dummy labs, one [Rmarkdown lab](https://github.com/UBC-MDS/labzen/blob/main/data-raw/dummylab.Rmd) and one [Jupyter notebook](https://github.com/UBC-MDS/labzen/blob/main/data-raw/dummylab.ipynb).
 
 Clone labzen repository using the following command:
 ```
