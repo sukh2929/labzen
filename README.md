@@ -74,8 +74,15 @@ Navigate to the root of labzen repo. From the root of repository run the followi
  To check the lab mechanics run the following python commands: 
 
 ```
-lz.check_mechanics(<repo_name>)
+lz.check_mechanics(<repo_name>, <filename>)
 ```
+
+`check_mechanics()` checks that you have provided a Github repo link, that you have pushed your latest commit, and that you have at least three commit messages authored by you in your history.
+
+The below git shows how to run `check_mechanics()`
+
+![Here is how you can run it](check_mechanics.gif)
+
 The repo name should be present under https://github.ubc.ca. After running the code, it would ask first for a github token, and then  ask for a local git path. 
 
 For macOS provide the following path format:
@@ -86,7 +93,7 @@ and for windows provide the following path format:
 ```
  C:\\Users\\jene\\MDS\\Block5\\lab\\DSCI_599_lab1_jene3456
 ```
-`check_mechanics()` checks that you have provided a Github repo link, that you have pushed your latest commit, and that you have at least three commit messages authored by you in your history.
+
 
 ## Documentation
 
