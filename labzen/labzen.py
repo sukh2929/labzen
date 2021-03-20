@@ -281,6 +281,7 @@ def check_lat_version(repo_name: str):
 
     # get the repo name and and the last commit from the remote
     for repo in org.get_repos(type="all"):
+        lst_rem_commit = ""
         if repo.name == repo_name:
             print(repo.name)
             commit_remote = repo.get_commits()
@@ -341,12 +342,13 @@ def check_commits(repo_name: str):
 
     # get the repo name and commits
     for repo in org.get_repos(type="all"):
+        counter_invaliduser = 0
+        counter_validuser = 0
         if repo.name == repo_name:
             print(repo.name)
 
             if repo.get_commits().totalCount >= 3:
-                counter_invaliduser = 0
-                counter_validuser = 0
+
                 for commit in repo.get_commits():
                     # comapring the username with the commit author to get the
                     # commits only done by student's username
@@ -421,8 +423,8 @@ def check_mechanics(repo_name: str, file_name: str = None):
     """
 
     result = [
-        check_commits(repo_name),
         check_lat_version(repo_name),
+        check_commits(repo_name),
         check_repo_link(file_name),
     ]
 

@@ -12,7 +12,7 @@
 ## Installation
 
 ```bash
-$ pip install -i https://test.pypi.org/simple/ labzen
+$ pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple labzen
 ```
 
 ## Features
@@ -69,14 +69,14 @@ Navigate to the root of labzen repo. From the root of repository run the followi
 >>> print(df)
 >>> print(tab)
 ```
- This will return a tuple of DataFrames. The first Dataframe is a section-by-section overview of points available. The second Dataframe is a cross table summarising the number of optional, required, and total points per lab.
+ This will return a tuple of DataFrames. The first Dataframe is a section-by-section overview of points available. The second Dataframe is a cross table summarizing the number of optional, required, and total points per lab.
 
  To check the lab mechanics run the following python commands: 
 
 ```
 lz.check_mechanics(<repo_name>)
 ```
-The repo name should be present under https://github.ubc.ca. After runnint the code, it would ask first for a github token, and then  ask for a local git path. 
+The repo name should be present under https://github.ubc.ca. After running the code, it would ask first for a github token, and then  ask for a local git path. 
 
 For macOS provide the following path format:
 ```
