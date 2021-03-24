@@ -53,7 +53,7 @@ In order to show the usage of our package, we provided two dummy labs, one [Rmar
 
 Clone labzen repository using the following command:
 ```
-https://github.com/UBC-MDS/labzen.git
+git clone https://github.com/UBC-MDS/labzen.git
 ```
 Navigate to the root of labzen repo. From the root of repository run the following python commands:
 
@@ -65,7 +65,7 @@ Navigate to the root of labzen repo. From the root of repository run the followi
 >>> print(tab)
 
 # for Rmarkdown:
->>> df, tab = count_points("data-raw/dummylab.Rmd")
+>>> df, tab = lz.count_points("data-raw/dummylab.Rmd")
 >>> print(df)
 >>> print(tab)
 ```
