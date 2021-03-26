@@ -19,6 +19,7 @@ To get started, check out the sections below:
    :caption: Contents:
 
    installation
+   token
    usage
    contributing
    conduct
