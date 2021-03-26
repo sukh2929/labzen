@@ -56,8 +56,7 @@ def parse_lab(notebook=None):
             type_files = glob.glob(pathname, recursive=True)
             files += type_files
         names = [
-            str(n + 1) + "." + os.path.basename(file)
-            for n, file in enumerate(files)
+            str(n + 1) + "." + os.path.basename(file) for n, file in enumerate(files)
         ]
         print("The existing files are:")
         for item in names:
@@ -98,7 +97,7 @@ def parse_lab(notebook=None):
             for cell in code_cells:
                 source.append(cell["source"])
 
-    return source
+    return source, path
 
 
 def count_points(file_name: str = None, margins: bool = True):
@@ -139,7 +138,9 @@ def count_points(file_name: str = None, margins: bool = True):
         >>> print(tab)
     """
     # Parse a lab file into its markdown blocks
-    res = parse_lab(file_name)
+    global res, path
+    res, path = parse_lab(file_name)
+
     df = pd.DataFrame({"block": np.arange(1, len(res) + 1), "txt": res})
 
     # Tidy breaks, new lines, extra spaces, and make each line a row
@@ -194,6 +195,7 @@ def count_points(file_name: str = None, margins: bool = True):
 
     # re-order columns
     df = df[["block", "header", "rubric", "points", "total", "prop", "type"]]
+    print(df, tab)
 
     return df, tab
 
@@ -227,7 +229,6 @@ def check_repo_link(file_name: str = None):
     """
 
     # Parse a lab file into its markdown blocks
-    res = parse_lab(file_name)
 
     df = pd.DataFrame({"block": np.arange(1, len(res) + 1), "txt": res})
 
@@ -252,7 +253,9 @@ def check_repo_link(file_name: str = None):
     return repo_link
 
 
-def check_lat_version(repo_name: str):
+# def check_lat_version(repo_name: str):
+def check_lat_version(file_name: str = None):
+
     """Check whether the user has pushed the latest version in his/her
         repository
 
@@ -274,47 +277,64 @@ def check_lat_version(repo_name: str):
         >>> # C:\\Users\\jene\\MDS\\Block5\\lab\\DSCI_599_lab1_jene3456
     """
     # get the token from https://github.ubc.ca
+    global res, path
+    res, path = parse_lab(file_name)
+
     global token
     token = gettoken()
     g = Github(token, base_url="https://github.ubc.ca/api/v3")
     org = g.get_organization("MDS-2020-21")
+    repo_lat_not_exist = True
+    lst_rem_commit = ""
+
+    # calling path variable parse_lab()
+    # res, path = parse_lab(file_name)
+    print(path)
+
+    # finding the root directory of the user selected file
+    git_repo = git.Repo(path, search_parent_directories=True)
+    git_root = git_repo.git.rev_parse("--show-toplevel")
+    print(git_root)
+    repo_name = git_root.split("/")[-1]
+    print(repo_name)
 
     # get the repo name and and the last commit from the remote
     for repo in org.get_repos(type="all"):
-        lst_rem_commit = ""
         if repo.name == repo_name:
             print(repo.name)
+            repo_lat_not_exist = False
             commit_remote = repo.get_commits()
             lst_rem_commit = str(commit_remote[0])
             lst_rem_commit = lst_rem_commit.str.replace("Commit(sha=", "")
             lst_rem_commit = lst_rem_commit.str.replace('"', "")
             lst_rem_commit = lst_rem_commit.str.replace(")", "")
-
-            print(lst_rem_commit)
+            break
 
     # get the commit SHA from local repo
-    val = input(
-        "Enter the local repo path for comparing the lastest version of repo: "
-    )
-    repo = git.Repo(val)
-
-    commit_local = str(repo.head.commit)
-    print(commit_local)
-
-    # comparing the both SHAs
-    if lst_rem_commit == commit_local:
-        print("Check 2: Remote has the latest version of the repository")
-        print("Check 2: ", True)
+    if repo_lat_not_exist:
+        print("Check 1 for testing repo link: Repository should be under github.ubc.ca")
+        return False
     else:
-        print(
-            "Check 2: Remote does not have the latest version of the ",
-            "repository",
+        val = input(
+            "Enter the local repo path for comparing the lastest version of repo: "
         )
-        print("Check 2: ", False)
-    return lst_rem_commit == commit_local
+        repo = git.Repo(val)
+        commit_local = str(repo.head.commit)
+        # comparing the both SHAs
+        if lst_rem_commit == commit_local:
+            print("Check 1: Remote has the latest version of the repository")
+            print("Check 1: ", True)
+        else:
+            print(
+                "Check 1: Remote does not have the latest version of the ",
+                "repository",
+            )
+            print("Check 1: ", False)
+        return lst_rem_commit == commit_local
 
 
-def check_commits(repo_name: str):
+# def check_commits(repo_name: str):
+def check_commits(file_name: str = None):
     """Check whether the user has at least three commits
 
     Args:
@@ -339,13 +359,26 @@ def check_commits(repo_name: str):
     # token = gettoken()
     g = Github(token, base_url="https://github.ubc.ca/api/v3")
     org = g.get_organization("MDS-2020-21")
+    repo_not_exist = True
+
+    # source, path = parse_lab(file_name)
+    print(path)
+
+    # finding the root directory of the user selected file
+    git_repo = git.Repo(path, search_parent_directories=True)
+    git_root = git_repo.git.rev_parse("--show-toplevel")
+    print(git_root)
+    repo_name = git_root.split("/")[-1]
+    print(repo_name)
 
     # get the repo name and commits
     for repo in org.get_repos(type="all"):
         counter_invaliduser = 0
         counter_validuser = 0
+
         if repo.name == repo_name:
             print(repo.name)
+            repo_not_exist = False
 
             if repo.get_commits().totalCount >= 3:
 
@@ -368,30 +401,35 @@ def check_commits(repo_name: str):
                 if counter_validuser >= 3:
 
                     print(
-                        "Check 1: Repository has at least 3 commits with",
+                        "Check 2: Repository has at least 3 commits with",
                         " the student username",
                     )
-                    print("Check 1: ", True)
+                    print("Check 2: ", True)
 
                     break
 
                 if counter_invaliduser >= 3:
 
                     print(
-                        "Check 1: Repository does not have 3 commits with the"
+                        "Check 2: Repository does not have 3 commits with the"
                         "student username"
                     )
-                    print("Check 1: ", False)
+                    print("Check 2: ", False)
 
             else:
-                print(
-                    f"Check 1: Repository:{repo.name} has less than 3 commits"
-                )
-                print("Check 1: ", False)
+                print(f"Check 2: Repository:{repo.name} has less than 3 commits")
+                print("Check 2: ", False)
+
+    if repo_not_exist:
+        print(
+            "Check 2 for testing minimumn 3 commits: Repository should be under github.ubc.ca"
+        )
+
     return counter_validuser >= 3
 
 
-def check_mechanics(repo_name: str, file_name: str = None):
+# def check_mechanics(repo_name: str, file_name: str = None):
+def check_mechanics(file_name: str = None):
     """Performs Mechanics Checks on a MDS Lab
        This function check that you have a Github repo link, that you have
        pushed your latest commit, and that you have at least three commit
@@ -423,9 +461,20 @@ def check_mechanics(repo_name: str, file_name: str = None):
     """
 
     result = [
-        check_lat_version(repo_name),
-        check_commits(repo_name),
+        check_lat_version(file_name),
+        check_commits(file_name),
         check_repo_link(file_name),
     ]
 
     return all(result)
+
+
+# pyfile = "data-raw/dummylab.ipynb"
+# reponame = "DSCI_563_lab1_sukh2929"
+
+
+# check_repo_link()
+# check_commits(pyfile)
+# check_lat_version(pyfile)
+# count_points()
+# check_mechanics()
