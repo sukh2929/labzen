@@ -209,7 +209,6 @@ def count_points(file_name: str = None, margins: bool = True):
 
     # re-order columns
     df = df[["block", "header", "rubric", "points", "total", "prop", "type"]]
-    print(df, tab)
 
     return df, tab
 
@@ -303,14 +302,11 @@ def check_lat_version(file_name: str = None):
 
     # calling path variable parse_lab()
     # res, path = parse_lab(file_name)
-    print(path)
 
     # finding the root directory of the user selected file
     git_repo = git.Repo(path, search_parent_directories=True)
     git_root = git_repo.git.rev_parse("--show-toplevel")
-    print(git_root)
     repo_name = git_root.split("/")[-1]
-    print(repo_name)
 
     # get the repo name and and the last commit from the remote
     for repo in org.get_repos(type="all"):
@@ -319,9 +315,9 @@ def check_lat_version(file_name: str = None):
             repo_lat_not_exist = False
             commit_remote = repo.get_commits()
             lst_rem_commit = str(commit_remote[0])
-            lst_rem_commit = lst_rem_commit.str.replace("Commit(sha=", "")
-            lst_rem_commit = lst_rem_commit.str.replace('"', "")
-            lst_rem_commit = lst_rem_commit.str.replace(")", "")
+            lst_rem_commit = lst_rem_commit.replace("Commit(sha=", "")
+            lst_rem_commit = lst_rem_commit.replace('"', "")
+            lst_rem_commit = lst_rem_commit.replace(")", "")
             break
 
     # get the commit SHA from local repo
@@ -376,14 +372,13 @@ def check_commits(file_name: str = None):
     repo_not_exist = True
 
     # source, path = parse_lab(file_name)
-    print(path)
 
     # finding the root directory of the user selected file
     git_repo = git.Repo(path, search_parent_directories=True)
     git_root = git_repo.git.rev_parse("--show-toplevel")
-    print(git_root)
+    # print(git_root)
     repo_name = git_root.split("/")[-1]
-    print(repo_name)
+    # print(repo_name)
 
     # get the repo name and commits
     for repo in org.get_repos(type="all"):
@@ -481,14 +476,3 @@ def check_mechanics(file_name: str = None):
     ]
 
     return all(result)
-
-
-# pyfile = "data-raw/dummylab.ipynb"
-# reponame = "DSCI_563_lab1_sukh2929"
-
-
-# check_repo_link()
-# check_commits(pyfile)
-# check_lat_version(pyfile)
-# count_points()
-# check_mechanics()
