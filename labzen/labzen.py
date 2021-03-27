@@ -70,7 +70,8 @@ def parse_lab(notebook=None):
             type_files = glob.glob(pathname, recursive=True)
             files += type_files
         names = [
-            str(n + 1) + "." + os.path.basename(file) for n, file in enumerate(files)
+            str(n + 1) + "." + os.path.basename(file)
+            for n, file in enumerate(files)
         ]
         print("The existing files are:")
         for item in names:
@@ -322,11 +323,15 @@ def check_lat_version(file_name: str = None):
 
     # get the commit SHA from local repo
     if repo_lat_not_exist:
-        print("Check 1 for testing repo link: Repository should be under github.ubc.ca")
+        print(
+            "Check 1 for testing repo link: Repository should be"
+            + "under github.ubc.ca"
+        )
         return False
     else:
         val = input(
-            "Enter the local repo path for comparing the lastest version of repo: "
+            "Enter the local repo path for comparing the lastest"
+            + "version of repo: "
         )
         repo = git.Repo(val)
         commit_local = str(repo.head.commit)
@@ -426,12 +431,15 @@ def check_commits(file_name: str = None):
                     print("Check 2: ", False)
 
             else:
-                print(f"Check 2: Repository:{repo.name} has less than 3 commits")
+                print(
+                    f"Check 2: Repository:{repo.name} has less than 3 commits"
+                )
                 print("Check 2: ", False)
 
     if repo_not_exist:
         print(
-            "Check 2 for testing minimumn 3 commits: Repository should be under github.ubc.ca"
+            "Check 2 for testing minimumn 3 commits: Repository should be"
+            + "under github.ubc.ca"
         )
 
     return counter_validuser >= 3
