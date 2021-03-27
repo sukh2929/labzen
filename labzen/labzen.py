@@ -15,8 +15,8 @@ import webbrowser
 def _find_assignment(directory=None):
     """Find an Assignment Dyamically
 
-    A helper function to validate and locate the a lab file based on its
-    extension being Rmd ipynb. The utility will search recursively up the
+    A helper function to validate and locate the lab file based on its
+    extension being Rmd or ipynb. The utility will search recursively up the
     directory. If multiple candidate files are found, the user will be
     prompted to select which file they wish.
 
@@ -438,7 +438,7 @@ def _check_commits(path: str, token: str, verbose=False):
                         commit.commit.author.date,
                         commit.author.name,
                     )
-        check_result = student_commits_n > 3
+        check_result = student_commits_n >= 3
     else:
         check_result = False
 
