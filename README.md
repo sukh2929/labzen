@@ -32,7 +32,7 @@ The package is currently under development, but will include the following funct
 
 The package data will include a directory of public and/or dummy lab files (.ipynb and .Rmd). Private or unpublished lab files will not be committed to the repository.
 
-To the authors' knowledge, no package yet exists in the Python ecosystem that serves this specific purpose. However, several existing packages will be used to power the functionality of `labzen`, including `GitPython`, `pandas`, and `nbformat`. Some other python repos and past assignments may be used as inspiration, such as the parsing work done in the _throughput database_ in DSCI 513.
+To the authors' knowledge, no package yet exists in the Python ecosystem that serves this specific purpose. However, several existing packages will be used to power the functionality of `labzen`, including `GitPython`, `pandas`, and `nbformat`. 
 
 A parallel implementation for R exists [here](https://github.com/UBC-MDS/labzenr).
 
@@ -51,61 +51,85 @@ See the [pyproject.toml](pyproject.toml) file for complete list of `labzen` depe
 
 Start by generating a token for UBC's Github Enterprise account (instructions [here](https://labzen.readthedocs.io/en/latest/token.html)).
 
-In order to show the usage of our package, we provided two dummy labs, one [Rmarkdown lab](https://github.com/UBC-MDS/labzen/blob/main/data-raw/dummylab.Rmd) and one [Jupyter notebook](https://github.com/UBC-MDS/labzen/blob/main/data-raw/dummylab.ipynb).
+In order to show the functionality of our package, we provided two dummy labs, one [Rmarkdown lab](https://github.com/UBC-MDS/labzen/blob/main/data-raw/dummylab.Rmd) and one [Jupyter notebook](https://github.com/UBC-MDS/labzen/blob/main/data-raw/dummylab.ipynb).
 
-Clone labzen repository using the following command:
-```
-git clone https://github.com/UBC-MDS/labzen.git
-```
-Navigate to the root of labzen repo. From the root of repository run the following python commands:
+To access the dummy lab files, you can either clone the repository using the following command::
 
 ```
+$ git clone https://github.com/UBC-MDS/labzen.git
+```
+
+Or, you can download them in your working directory using the following python code:
+
+``` python
+
+# Download the demo files into the working directory
+import urllib.request
+baseurl = "https://raw.githubusercontent.com/UBC-MDS/labzen/main/data-raw"
+labs = {
+    "dummylab.Rmd": f"{baseurl}/dummylab.Rmd",
+    "dummylab.ipynb": f"{baseurl}/dummylab.ipynb",
+}
+for name, url in labs.items():
+	urllib.request.urlretrieve(url, name)
+```
+
+From the root of the repository/ working directory run the following python code:
+
+```python
 >>> from labzen import labzen as lz
 # for jupyter notebook:
 >>> df, tab = lz.count_points("data-raw/dummylab.ipynb")
->>> print(df)
->>> print(tab)
-
-# for Rmarkdown:
->>> df, tab = lz.count_points("data-raw/dummylab.Rmd")
->>> print(df)
->>> print(tab)
+>>> df
 ```
- This will return a tuple of DataFrames. The first Dataframe is a section-by-section overview of points available. The second Dataframe is a cross table summarizing the number of optional, required, and total points per lab.
 
- To check the lab mechanics run the following python commands: 
+![](docs/img/extract_points.jpg)
+
+
+The table above shows that there are 6 sections in this lab, and whether these points are optional or not. The total number of points is shown in the total column. Since requires quesitons only are meant to get you to a 95% grade, the optionals may imply a total percentage that is less than (or more) than 100% in the prop column. For convenience, the total marks can also be viewed via:
+
+```python
+tab
+```
+![](docs/img/total_points.jpg)
+
+
+In order to use `check_mechanics`, you need to provide the following arguments to the function: 
+
+- A local path to a Github directory of your MDS lab or an MDS lab file (.ipynb or .Rmd) within such a directory.
+- A personal access token for https://github.ubc.ca. See [Github Tokens](https://labzen.readthedocs.io/en/latest/token.html) for a guidline on how to generate your personal token from Github Enterprise.
+
+Then, you can run ``check_mechanics()`` as follows:
+
+``` python
+
+file = "~/MDS/Block5/lab1/DSCI_599_lab1_jene3456"
+#for windows you may have to use the following path format
+#  C:\\Users\\jene\\MDS\\Block5\\lab\\DSCI_599_lab1_jene3456
+token = "544c96ce0d3dc9b66ac8d70b32c07bd0c46129db"
+lz.check_mechanics(file, token)
+```
 
 ```
-lz.check_mechanics(<repo_name>, <filename>)
+Check 1: Repository has at least 3 commits with the student
+username JENE SMITH
+Check 1: True
+Check 2: Remote has the latest version of the repository
+Check 2: True
+Check 3: Repository link is included in the file
+Check 3: True
 ```
 
 `check_mechanics()` checks that you have provided a Github repo link, that you have pushed your latest commit, and that you have at least three commit messages authored by you in your history.
-
-The below git shows how to run `check_mechanics()`
-
-![Here is how you can run it](check_mechanics.gif)
-
-The repo name should be present under https://github.ubc.ca. After running the code, it would ask first for a github token, and then  ask for a local git path. 
-
-For macOS provide the following path format:
-```
-/Users/jene/MDS/Block5/lab/DSCI_599_lab1_jene3456
-```
-and for windows provide the following path format:
-```
- C:\\Users\\jene\\MDS\\Block5\\lab\\DSCI_599_lab1_jene3456
-```
-
-
 ## Documentation
 
 The official documentation is hosted on Read the Docs: https://labzen.readthedocs.io/en/latest/
 
-## Contributors
+## collaborators
 
-This package is authored by Sukhdeep Kaur, Kamal Moravej Jahromi, and Rafael Pilliard-Hellwig as part of an academic assignment in the UBC MDS program. For a full list of contributors, please see the [contributors tab](https://github.com/UBC-MDS/labzen/graphs/contributors). 
+This package is authored by Sukhdeep Kaur, Kamal Moravej Jahromi, and Rafael Pilliard-Hellwig as part of an academic assignment in the UBC MDS program. For a full list of collaborators, please see the [collaborative file](https://github.com/UBC-MDS/labzen/graphs/contributors). 
 
-We warmly welcome and recognize contributions from the community at large. If you wish to participate, please review our [contributing guidelines](CONTRIBUTING.rst) and familiarize yourself with [Github Flow](https://blog.programster.org/git-workflows).
+We warmly welcome and recognize contributions from the community at large. If you wish to participate, please review our [contributing guidelines](CONTRIBUTING.rst) and familiarize yourself with [Github Flow](https://blog.programster.org/git-workflows). For a complete list of contributors please visit [Contributors](Contributors.md).
 
 To make collaboration easier, we suggest you use git, anaconda, poetry, and pytest:
 
