@@ -12,7 +12,7 @@
 ## Installation
 
 ```bash
-$ pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple labzen
+pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple labzen
 ```
 
 ## Features
@@ -56,7 +56,7 @@ In order to show the functionality of our package, we provided two dummy labs, o
 To access the dummy lab files, you can either clone the repository using the following command::
 
 ```
-$ git clone https://github.com/UBC-MDS/labzen.git
+git clone https://github.com/UBC-MDS/labzen.git
 ```
 
 Or, you can download them in your working directory using the following python code:
